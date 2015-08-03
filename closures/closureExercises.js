@@ -57,3 +57,22 @@ var storyWriter = function() {
     }
   };
 };
+
+
+var Toaster = function() {
+  var maxTemp = 500;
+  var temp = 0;
+  return {
+    temp: 0,
+    setTemp: function(newTemp) {
+      if (newTemp > maxTemp) {
+        console.log("That temp is too high!");
+      } else {
+        this.temp = newTemp;
+      }
+    }
+  };
+};
+
+var myToaster = Toaster();
+myToaster.setTemp(300);
