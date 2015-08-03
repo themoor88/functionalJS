@@ -114,9 +114,9 @@
       };
 
       fn();
-      expect(ACTUAL === '???').to.be.true;
+      expect(ACTUAL === 'alpha').to.be.true;
       fn();
-      expect(ACTUAL === '???').to.be.true;
+      expect(ACTUAL === 'alpha').to.be.true;
     });
 
     it('an inner function can access both its local scope variables and variables in its containing scope, provided the variables have different names', function () {
@@ -126,7 +126,7 @@
         ACTUAL = innerName + outerName;
       };
       fn();
-      expect(ACTUAL === '???').to.be.true;
+      expect(ACTUAL === 'innerouter').to.be.true;
     });
 
     it('between calls to an inner function, that inner function retains access to a variable in an outer scope. Modifying those variables has a lasting effect between calls to the inner function.', function () {
@@ -138,9 +138,9 @@
       };
 
       fn();
-      expect(ACTUAL === '???').to.be.true;
+      expect(ACTUAL === 11).to.be.true;
       fn();
-      expect(ACTUAL === '???').to.be.true;
+      expect(ACTUAL === 12).to.be.true;
     });
 
     it('the rule about retaining access to variables from an outer scope still applies, even after the outer function call (that created the outer scope) has returned', function () {
@@ -154,9 +154,9 @@
         };
 
         innerIncrementingFn();
-        expect(ACTUAL === '???').to.be.true;
+        expect(ACTUAL === 11).to.be.true;
         innerIncrementingFn();
-        expect(ACTUAL === '???').to.be.true;
+        expect(ACTUAL === 12).to.be.true;
         // Here, we retain a reference to the newly created inner function for later, by assigning it to the global scope (window)
         window.retainedInnerFn = innerIncrementingFn;
 
@@ -169,7 +169,7 @@
       expect(window.retainedInnerFn).to.be.a('function');
       // even though the outerFn has returned once the only call to it was completed a couple of lines above, the inner function remains available in the global scope, and still has access to the variables of that containing scope where it was first created.
       window.retainedInnerFn();
-      expect(ACTUAL === '???').to.be.true;
+      expect(ACTUAL === 13).to.be.true;
     });
   });
 })();
