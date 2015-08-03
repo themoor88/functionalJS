@@ -61,7 +61,7 @@
         // in addition, calling the firstFn (which in turn calls the secondFn) should also throw, since it the calling context of secondFn has no influence over its scope access rules
         firstFn();
       }).to.throw();
-      expect(ACTUAL === 'first').to.be.true;
+      expect(ACTUAL === null).to.be.true;
     });
 
     it('if an inner and an outer variable share the same name, and the name is referenced in the inner scope, the inner scope variable masks the variable from the outer scope with the same name. This renders the outer scope variables inaccassible from anywhere within the inner function block', function () {
